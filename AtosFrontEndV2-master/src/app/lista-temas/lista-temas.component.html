@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="row" id="lis">
+
+        <div class="title">
+            <div class="row">
+                <div class="col">
+                    <h4><b>Lista de Temas</b></h4>
+                    <button class="btn waves-effect waves-light blue " id="boto" type="button" routerLink="/agretema">Crear Tema</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h5>Filtrar búsqueda</h5>
+                </div>
+            </div>
+
+            <!--   ....................  -->
+
+            <div class="row">
+                
+                    <div class="input-group col s4">
+                        <label for="ini">Título</label>
+                        <input type="text" class="form-control" [(ngModel)]="titulo">
+                    </div>
+                    <div class="input-group col s4">
+                        <label for="ini">Descripcion</label>
+                        <input type="text" class="form-control" [(ngModel)]="descripcion">
+                    </div>
+                    <div class="input-group col s4">
+                        <label for="ini">Fecha de inicio</label>
+                        <input id="ini" type="date" class="form-control" [(ngModel)]="inicio">
+                    </div>
+
+
+
+                <div class="row">
+                    <div class="input-group col s4" style="padding-top: 5rem;">
+                         <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="handleClear()">LIMPIAR</button>
+                        <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="getTemasByTituloAndDescripcionAndInicioAndFin()">BUSCAR</button>
+                        <button class="btn waves-effect waves-light blue " id="botone" (click)='getTemasAll()'>Mostrar Todas</button>
+
+                    </div>
+                    
+                    <div class="input-group col s4">
+                        <label for="iniciativa" class="col-form-label col-sm-2">Iniciativa </label>
+                        <select class="browser-default " [ngModelOptions]="{standalone: true}" [(ngModel)]="iniciativa">
+                            <option *ngFor="let iniciativa of iniciativas" [ngValue]="iniciativa">
+                            {{iniciativa.tituloIniciativa}}
+                            </option>
+                        </select>
+                        <br>
+                    </div>
+                    <div class="input-group col s4">
+                        <label for="fin">Fecha de finalización</label>
+                        <input id="fin" type="date" class="form-control" [(ngModel)]="fin">
+                    </div>
+                </div>
+
+         </div>
+        </div>
+
+           <!--   .................... -->
+
+
+        <div id="listaTemas">
+            <div class="row border-top border-bottom border-left">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Fecha inicio - fin</th>
+                            <th>Iniciativa</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let temas of temas">
+                            <td>{{ temas.titulo }}</td>
+                            <td>{{ temas.descripcion }}</td>
+                            <td>{{ temas.inicio }} - {{ temas.fin }}</td>
+                            <td>{{ temas.iniciativa.tituloIniciativa }}</td>
+                            <td><a class="btn waves-effect waves-light blue " [routerLink]="['/listaTemas/agretema' , temas.idTema]"> Modificar</a></td>
+                            <td><a class="btn waves-effect waves-light blue " (click)='delete(temas)'>Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>

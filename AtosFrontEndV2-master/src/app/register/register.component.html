@@ -1,0 +1,455 @@
+<div class="row">
+    <div class="col s12 center">
+        <h1> <b>Registro de nuevo Usuario</b></h1>
+    </div>
+</div>
+
+<form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+    <div class="row">
+        <div class="offset-l4 input-field col l2 s12">
+            <input type="text" class="validate" name="username" [(ngModel)]="user.username" required minlength="3"
+                maxlength="20" #username="ngModel" />
+            <div class="red" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors ['required']">El nombre de usuario es obligatorio</div>
+                <div *ngIf="username.errors ['minlength']">
+                    El nombre de usuario debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="username.errors ['maxlength']">
+                    El nombre de usuario no puede tener más de 20 caracteres
+                </div>
+            </div>
+            <label for="username">Nombre de Usuario*</label>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="password">Contraseña*</label>
+            <input type="password" class="validate" name="password" [(ngModel)]="user.password" required minlength="6"
+                #password="ngModel" />
+            <div class="red" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors ['required']">Contraseña es obligatoria</div>
+                <div *ngIf="password.errors ['minlength']">
+                    Contraseña debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="password.errors ['maxlength']">
+                    Contraseña no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <input type="text" class="validate" name="email" [(ngModel)]="user.email" required email #email="ngModel" />
+            <div class="red" *ngIf="email.errors && f.submitted">
+                <div *ngIf="email.errors ['required']">Email es obligatorio</div>
+                <div *ngIf="email.errors ['email']">
+                    Email debe ser una dirección de email válida
+                </div>
+            </div>
+            <label for="email">Email*</label>
+        </div>
+        <div class="input-field col l2 s12">
+            <label for="location">Localización*</label>
+            <input type="text" class="validate" name="Location" [(ngModel)]="user.location" required minlength="3"
+                maxlength="20" location #location="ngModel" />
+            <div class="red" *ngIf="location.errors && f.submitted">
+                <div *ngIf="location.errors ['required']">La Localizacion es obligatoria</div>
+                <div *ngIf="location.errors ['minlength']">
+                    La Localizacion debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="location.errors ['maxlength']">
+                    La Localizacion no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <input type="text" class="validate" name="name" [(ngModel)]="user.name" required minlength="3"
+                maxlength="20" #apellidos="ngModel" />
+            <label for="name">Nombre*</label>
+
+            <!--
+            <div class="red" *ngIf="name.errors && f.submitted">
+                <div *ngIf="name.errors ['required']">El nombre es obligatoria</div>
+                <div *ngIf="name.errors ['minlength']">
+                    El nombre debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="name.errors ['maxlength']">
+                    El nombre no puede tener más de 20 caracteres
+                </div>
+            </div>
+            -->
+
+
+        </div>
+
+
+
+
+        <div class="input-field col l2 s12">
+            <input type="text" class="validate" name="Apellido" [(ngModel)]="user.apellidos" required minlength="3"
+                maxlength="20" #apellidos="ngModel" />
+            <div class="red" *ngIf="apellidos.errors && f.submitted">
+                <div *ngIf="apellidos.errors ['required']">Apellido es obligatorio</div>
+                <div *ngIf="apellidos.errors ['minlength']">
+                    Apellido debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="apellidos.errors ['maxlength']">
+                    Apellido no puede tener más de 20 caracteres
+                </div>
+            </div>
+            <label for="apellidos">Apellidos*</label>
+        </div>
+
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="center">Centro Formativo*</label>
+            <input type="text" class="validate" name="center" [(ngModel)]="user.center" minlength="3" maxlength="20"
+                required center #center="ngModel" />
+            <div class="red" *ngIf="center.errors && f.submitted">
+                <div *ngIf="center.errors ['required']">El centro es obligatorio</div>
+                <div *ngIf="center.errors ['minlength']">
+                    El Centro debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="center.errors ['maxlength']">
+                    El Centro no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="das">DAS*</label>
+            <input type="text" class="validate" name="das" [(ngModel)]="user.das" required minlength="3" maxlength="20"
+                #das="ngModel" />
+            <div class="red" *ngIf="das.errors && f.submitted">
+                <div *ngIf="das.errors ['required']">El DAS es obligatoria</div>
+                <div *ngIf="das.errors ['minlength']">
+                    El DAS debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="das.errors ['maxlength']">
+                    El DAS no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="teacher">Profesor</label>
+            <input type="text" class="validate" name="teacher" [(ngModel)]="user.teacher" minlength="3" maxlength="20"
+                #teacher="ngModel" />
+            <div class="red" *ngIf="teacher.errors && f.submitted">
+
+                <div *ngIf="teacher.errors ['minlength']">
+                    El Profesor de Teams debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="teacher.errors ['maxlength']">
+                    El Profesor no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="nameGroupTeams">Nombre de grupo de Teams</label>
+            <input type="text" class="validate" name="nameGroupTeams" [(ngModel)]="user.nameGroupTeams" minlength="3"
+                maxlength="20" nameGroupTeams #nameGroupTeams="ngModel" />
+            <div class="red" *ngIf="nameGroupTeams.errors && f.submitted">
+
+                <div *ngIf="nameGroupTeams.errors ['minlength']">
+                    Nombre de grupo de Teams debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="nameGroupTeams.errors ['maxlength']">
+                    Nombre de grupo de Teams no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="groupProyect">Grupo de Proyecto</label>
+            <input type="text" class="validate" name="groupProyect" [(ngModel)]="user.groupProyect" minlength="3"
+                maxlength="20" #groupProyect="ngModel" />
+            <div class="red" *ngIf="groupProyect.errors && f.submitted">
+
+                <div *ngIf="groupProyect.errors ['minlength']">
+                    El Grupo de Proyecto debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="groupProyect.errors ['maxlength']">
+                    El Grupo de Proyecto no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="input-field col l2 s12">
+            <label for="dni" pattern="((\d{8})([-]?)([A-Z]{1}))">DNI</label>
+            <input type="text" class="validate" name="dni" [(ngModel)]="user.dni" minlength="3" maxlength="20"
+                #dni="ngModel" />
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+
+            <input type="date" class="datepicker" name="fechaNacimiento" [(ngModel)]="user.fechaNacimiento"
+                fechaNacimiento #fechaNacimiento="ngModel" min="2018-01-01" max="2025-12-31">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <!--Validacion-->
+        </div>
+
+        <div class="input-field col l2 s12">
+
+            <input type="date" class="datepicker" name="fechaFCT" [(ngModel)]="user.fechaFCT" #fechaFCT="ngModel"
+                min="2018-01-01" max="2025-12-31">
+            <label for="fechaFCT">Fecha comienzo de FCT</label>
+
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <input type="date" class="datepicker" placeholder="Fecha final de FCT" name="email"
+                [(ngModel)]="user.finFCT" finFCT #finFCT="ngModel" min="2018-01-01" max="2025-12-31">
+            <label for="finFCT">Fecha final de FCT</label>
+
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="tipo">Tipo</label>
+            <input type="text" class="validate" name="tipo" [(ngModel)]="user.tipo" minlength="3" maxlength="20"
+                #tipo="ngModel" />
+            <div class="red" *ngIf="tipo.errors && f.submitted">
+
+                <div *ngIf="tipo.errors ['minlength']">
+                    Tipo debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="tipo.errors ['maxlength']">
+                    Tipo no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="po">PO</label>
+            <input type="text" class="validate" name="po" [(ngModel)]="user.po" minlength="3" maxlength="20" po
+                #po="ngModel" />
+            <div class="red" *ngIf="po.errors && f.submitted">
+
+                <div *ngIf="po.errors ['minlength']">
+                    PO debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="po.errors ['maxlength']">
+                    PO no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="ss">Numero de Seguridad Social</label>
+            <input type="text" class="validate" name="ss" [(ngModel)]="user.ss" minlength="3" maxlength="20"
+                #ss="ngModel" />
+            <div class="red" *ngIf="ss.errors && f.submitted">
+
+                <div *ngIf="ss.errors ['minlength']">
+                    SS debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="ss.errors ['maxlength']">
+                    SS no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="rr">RR</label>
+            <input type="text" class="validate" name="rr" [(ngModel)]="user.rr" rr #rr="ngModel" minlength="3"
+                maxlength="20" />
+            <div class="red" *ngIf="rr.errors && f.submitted">
+
+                <div *ngIf="rr.errors ['minlength']">
+                    RR debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="rr.errors ['maxlength']">
+                    RR no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="becas">Becas</label>
+            <input type="text" class="validate" name="becas" [(ngModel)]="user.becas" minlength="3" maxlength="20"
+                #becas="ngModel" />
+            <div class="red" *ngIf="becas.errors && f.submitted">
+
+                <div *ngIf="becas.errors ['minlength']">
+                    Becas debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="becas.errors ['maxlength']">
+                    Becas no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="ceco">Ceco</label>
+            <input type="text" class="validate" name="ceco" [(ngModel)]="user.ceco" minlength="3" maxlength="20" ceco
+                #ceco="ngModel" />
+            <div class="red" *ngIf="ceco.errors && f.submitted">
+
+                <div *ngIf="ceco.errors ['minlength']">
+                    Ceco de Unit debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="ceco.errors ['maxlength']">
+                    Ceco de Unit no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="orgUnit">Organizacion de Unit</label>
+            <input type="text" class="validate" name="orgUnit" [(ngModel)]="user.orgUnit" minlength="3" maxlength="20"
+                #orgUnit="ngModel" />
+            <div class="red" *ngIf="orgUnit.errors && f.submitted">
+
+                <div *ngIf="orgUnit.errors ['minlength']">
+                    Organizacion de Unit debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="orgUnit.errors ['maxlength']">
+                    Organizacion de Unit no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="sociedad">Sociedad</label>
+            <input type="text" class="validate" name="sociedad" [(ngModel)]="user.sociedad" minlength="3" maxlength="20"
+                sociedad #sociedad="ngModel" />
+            <div class="red" *ngIf="sociedad.errors && f.submitted">
+
+                <div *ngIf="sociedad.errors ['minlength']">
+                    Sociedad debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="sociedad.errors ['maxlength']">
+                    Sociedad no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="phone">Telefono</label>
+            <input type="text" class="validate" name="phone" [(ngModel)]="user.phone" minlength="3" maxlength="20"
+                #phone="ngModel" />
+            <div class="red" *ngIf="emailAtos.errors && f.submitted">
+
+                <div *ngIf="emailAtos.errors ['minlength']">
+                    El Email de Atos debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="emailAtos.errors ['maxlength']">
+                    El Convenio no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="emailAtos">Email de ATOS</label>
+            <input type="text" class="validate" name="emailAtos" [(ngModel)]="user.emailAtos" minlength="3"
+                maxlength="20" emailAtos #emailAtos="ngModel" />
+            <div class="red" *ngIf="emailAtos.errors && f.submitted">
+
+                <div *ngIf="emailAtos.errors ['minlength']">
+                    El Email de Atos debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="emailAtos.errors ['maxlength']">
+                    El Convenio no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="input-field col l2 s12">
+            <label for="convenio">Convenio</label>
+            <input type="text" class="validate" name="convenio" [(ngModel)]="user.convenio" minlength="3" maxlength="20"
+                convenio #convenio="ngModel" />
+            <div class="red" *ngIf="convenio.errors && f.submitted">
+
+                <div *ngIf="convenio.errors ['minlength']">
+                    El Convenio debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="convenio.errors ['maxlength']">
+                    El Convenio no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l2 s12">
+            <label for="contacto">Contacto</label>
+            <input type="text" class="validate" name="contacto" [(ngModel)]="user.contacto" minlength="3" maxlength="20"
+                #contacto="ngModel" />
+            <div class="red" *ngIf="contacto.errors && f.submitted">
+
+                <div *ngIf="contacto.errors ['minlength']">
+                    El Contacto debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="contacto.errors ['maxlength']">
+                    El Contacto no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="input-field col l2 s12">
+            <label for="positionId">Posicion de ID</label>
+            <input type="text" class="validate" name="positionId" [(ngModel)]="user.positionId" minlength="3" positionId
+                #positionId="ngModel" />
+            <div class="red" *ngIf="positionId.errors && f.submitted">
+
+                <div *ngIf="positionId.errors ['minlength']">
+                    Posicion de ID debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="positionId.errors ['maxlength']">
+                    Posicion de ID no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offset-l4 input-field col l2 s12">
+            Iniciativa
+            <label for="iniciativa" class="col-form-label col-sm-2"><span id="obligatorio"> </span></label>
+            <select class="browser-default" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.iniciativaUser"
+                #iniciativaUser="ngModel">
+                <option *ngFor="let iniciativa of iniciativas" [ngValue]="iniciativa">
+                    {{iniciativa.tituloIniciativa}}
+                </option>
+            </select>
+
+        </div>
+
+
+        <div class="input-field col l2 s6">
+            Rol
+            <select class="browser-default" name="u" [(ngModel)]="user.u" required minlength="2" #i="ngModel">
+                <option hidden selected>Selecciona una opción</option>
+                <option value="gestor">Gestor</option>
+                <option value="tutor">Tutor</option>
+                <option value="alumno">Usuario</option>
+
+            </select><label for="u"></label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="offset-l2 input-field col l2 s12">
+        </div>
+
+        <div class="input-field col l2 s6">
+            <button id="cancelar" class="btn waves-effect waves-light blue">Registrar Usuario</button>
+
+        </div>
+        <div class="input-field col l2 s6">
+            <button id="cancelar" class="btn waves-effect waves-light blue " routerLink="/admin">Cancelar</button>
+
+        </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Registro fallido<br />{{ errorMessage }}
+        </div>
+    </div>
+
+</form>
+
+<div class="alert alert-success" *ngIf="isSuccessful">
+    Se ha registrado correctamente!
+</div>

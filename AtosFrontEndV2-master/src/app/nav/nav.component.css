@@ -1,0 +1,32 @@
+a {
+    font-family: 'progress', 'arial', sans-serif;
+    font-size: 20px;
+    transition: ease-in-out .3s;
+}
+
+.active {
+    color: #0596FF;
+    text-decoration: underline;
+}
+
+.sidenav-overlay {
+    display: block;
+    opacity: 0 !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #logo {
+        height: auto;
+        width: 40%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #logo {
+        height: auto;
+        width: 30%;
+    }
+}
+

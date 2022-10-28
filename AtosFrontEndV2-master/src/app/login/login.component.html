@@ -1,0 +1,57 @@
+<div class="row">
+    <br>
+    <div class="col s12 center">
+        <img src="./assets/atos_cuadrado.png" class="responsive-img" alt="">
+    </div>
+</div>
+
+<div class="row">
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <br>
+        <div class="offset-l4 input-field col l4 s12">
+            <!--Campo de Usuario-->
+            <label for="username">Nombre</label>
+            <input type="text" class="validate" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
+            <div class="red" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors ['required']">El nombre de usuario es obligatorio</div>
+                <div *ngIf="username.errors ['minlength']">
+                    El nombre de usuario debe tener al menos 3 caracteres
+                </div>
+                <div *ngIf="username.errors ['maxlength']">
+                    El nombre de usuario no puede tener más de 20 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="offset-l4 input-field col l4 s12">
+            <label for="password">Contraseña</label>
+            <input type="password" class="validate" name="password" [(ngModel)]="form.password" required minlength="3" maxlength="20" #password="ngModel" />
+            <div class="alert alert-danger error" role="alert" *ngIf="password.errors && f.submitted">
+                <div class="red" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors ['required']">La contraseña es obligatoria</div>
+                    <div *ngIf="password.errors ['minlength']">
+                        Introduce minimo 3 caracteres
+                    </div>
+                    <div *ngIf="password.errors ['maxlength']">
+                        La contraseña no puede tener más de 20 caracteres
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="offset-l4 input-field col l4 s12">
+            <button class="btn waves-effect waves-light black center">Iniciar Sesion
+              <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <div class="input-field">
+            <div role="alert" *ngIf="f.submitted && isLoginFailed">
+                Login failed: {{ errorMessage }}
+            </div>
+
+            <div id="fallo" class="red" *ngIf="isLoginFailed" class="alert">Datos incorrectos </div>
+        </div>
+    </form>
+
+
+</div>

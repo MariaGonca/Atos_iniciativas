@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="row" id="lis">
+
+        <div class="title">
+            <div class="row">
+                <div class="col">
+                    <h4><b>Lista de Iniciativas</b></h4>
+                    <button class="btn waves-effect waves-light blue " id="boto" type="button" routerLink="/listaIniciativas/form">Crear Iniciativa</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h5>Filtrar búsqueda</h5>
+                </div>
+            </div>
+
+            <!--   ....................  -->
+
+            <div class="row">
+                    <div class="input-group col s4">
+                        <label >Título</label>
+                        <input type="text" class="form-control" [(ngModel)]="tituloIniciativa">
+                    </div>
+                    <div class="input-group col s4">
+                        <label >Descripcion</label>
+                        <input type="text" class="form-control" [(ngModel)]="descripcion">
+                    </div>
+                    <div class="input-group col s4">
+                        <label for="ini">Fecha de inicio</label>
+                        <input id="ini" type="date" class="form-control" [(ngModel)]="inicio"  max="2022-12-31">   
+                    </div>
+             
+                <div class="row">
+                    <div class="input-group col s4" style="padding-top: 2rem;">
+                        <label>   
+                            <input type="checkbox" [(ngModel)]="activa" checked="checked" />
+                            <span>ACTIVAS</span>
+                        </label>
+                    </div>
+                    <div class="input-group col s4">
+                    </div>
+                    <div class="input-group col s4">
+                        <label for="fin">Fecha de finalización</label>
+                        <input id="fin" type="date" class="form-control" [(ngModel)]="fin"  max="2100-12-31">
+                    </div>
+                   </div>
+
+
+                <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="getIniciativasByTituloIniciativaAndDescripcionAndInicioAndFinAndActiva()">BUSCAR</button>
+                <button class="btn waves-effect waves-light blue " id="botone" (click)='getIniciativasAll()'>Mostrar Todas</button>
+                <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="handleClear()">LIMPIAR</button>
+
+            </div>
+
+           </div>
+            <!--   .................... -->
+
+        <div id="listaIniciativas">
+            <div class="row border-top border-bottom border-left">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Fecha inicio - fin</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody *ngFor="let iniciativa of iniciativas">
+                        <tr>
+                            <td>{{ iniciativa.tituloIniciativa }}</td>
+                            <td>{{ iniciativa.descripcion }}</td>
+                            <td> {{ iniciativa.inicio }} - {{ iniciativa.fin }} </td>
+                            <td>
+                                <p>{{ iniciativa.activa == true? 'Activa' : 'Desactivada'}}</p>
+                            </td>
+                            <td><a class="btn waves-effect waves-light blue " [routerLink]="['/listaIniciativas/form', iniciativa.idIniciativa]"> Modificar</a></td>
+                            <td><a class="btn waves-effect waves-light blue " (click)='deleteOrDeactivate(iniciativa)'>Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

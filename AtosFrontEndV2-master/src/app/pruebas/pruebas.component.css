@@ -1,0 +1,16 @@
+img {
+    width: 20%;
+}
+
+#log {
+    font-size: 96px;
+}
+
+.container {
+    background-color: #3996cc;
+    border-radius: 45px;
+}
+
+label {
+    color: #000;
+}

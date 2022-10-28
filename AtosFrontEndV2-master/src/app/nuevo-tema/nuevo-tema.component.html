@@ -1,0 +1,94 @@
+<head>
+    <link rel="stylesheet" href="https://rawgit.com/angular/bower-material/master/angular-material.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-messages.js"></script>
+    <script src="https://rawgit.com/angular/bower-material/master/angular-material.js"></script>
+    <script>
+        var app = angular.module('App', ['ngMaterial', 'ngMessages']);
+        app.controller('AppCtrl', function($scope) {
+            $scope.statuses = [{
+                name: 'Active',
+                id: '1'
+            }, {
+                name: 'Inactive',
+                id: '2'
+            }]
+
+            $scope.statusId1 = null; // Required validation works if value is null
+            $scope.statusId2 = 0; // Issue: Required validation doesn't work it value is not null
+        });
+    </script>
+</head>
+
+<h4 id="title"><b>Crear tema</b></h4>
+
+<div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+
+        <form #temasForm="ngForm">
+            <div class="form-group row">
+                <div class="col s6">
+                    <label for="titulo" class="col-form-label col-sm-2">Título<span id="obligatorio"> *</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="temas.titulo" name="titulo" required #titulo="ngModel">
+                    <div class="alert alert-danger" *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+                        Este campo es obligatorio
+                    </div>
+                </div>
+                <div class="col s6">
+                       <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="temas.descripcion" name="descripcion" #descripcion="ngModel">
+                    <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                        Este campo es obligatorio
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="input-group col s4">
+                    <label for="iniciativa" class="col-form-label col-sm-2">Iniciativa<span id="obligatorio"> *</span></label>
+                    <select class="browser-default" [ngModelOptions]="{standalone: true}" [(ngModel)]="temas.iniciativa" required #iniciativa="ngModel">
+                        <option *ngFor="let iniciativa of iniciativas" [ngValue]="iniciativa">
+                                {{iniciativa.tituloIniciativa}}
+                        </option>
+                    </select>
+                    <br>
+                </div>
+                <div class="input-group col s4">
+                    <label for="inicio" class="col-form-label col-sm-2">Fecha de inicio</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" [(ngModel)]="temas.inicio" name="inicio" #inicio="ngModel" value="inicio">
+                        <div class="alert alert-danger" *ngIf="inicio.invalid && (inicio.dirty || inicio.touched)">
+                            Este campo es obligatorio
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group col s4">
+                    <label for="fin" class="col-form-label col-sm-2">Fecha de finalización</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" [(ngModel)]="temas.fin" name="fin" #fin="ngModel" value="fin">
+                        <div class="alert alert-danger" *ngIf="fin.invalid && (fin.dirty || fin.touched)">
+                            Este campo es obligatorio
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn waves-effect waves-light blue" id="cancelar" role="button" (click)='create()' *ngIf="!temas.idTema else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn waves-effect waves-light blue" id="cancelar" role="button" (click)='update()'>Guardar</button>
+                    </ng-template><button id="cancelar" class="btn waves-effect waves-light blue " routerLink="/listaTemas">Cancelar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

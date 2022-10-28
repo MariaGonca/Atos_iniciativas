@@ -1,0 +1,5 @@
+.list {
+    text-align: left; /* Alineación del texto*/
+    max-width: 750px; /* Máxima Anchura*/
+    margin: auto; /* Margen*/
+  }

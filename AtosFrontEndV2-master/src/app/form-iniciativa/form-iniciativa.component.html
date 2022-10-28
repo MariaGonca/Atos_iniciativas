@@ -1,0 +1,63 @@
+<h4 id="title"><b>Formulario de Iniciativas</b></h4>
+
+<div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+
+        <form #iniciativaForm="ngForm">
+            <div class="form-group row">
+                
+                <div class="col s6">
+                    <label for="tituloIniciativa" class="col-form-label col-sm-2">Título<span id="obligatorio">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="iniciativa.tituloIniciativa" name="tituloIniciativa" required #tituloIniciativa="ngModel">
+                    <div class="alert alert-danger"
+                        *ngIf="tituloIniciativa.invalid && (tituloIniciativa.dirty || tituloIniciativa.touched)">
+                        Este campo es obligatorio
+                    </div> 
+                </div> 
+                <div class="col s6">
+                    <label for="descripcion" class="col-form-label col-sm-2">Descripción<span id="obligatorio">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="iniciativa.descripcion" name="descripcion" required #descripcion="ngModel">
+                    <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                        Este campo es obligatorio
+                    </div>
+                </div>  
+            </div>
+
+            <div class="form-group row">
+                <div class="input-group col s6">
+                    <label for="inicio" class="col-form-label col-sm-2">Fecha de inicio</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" [(ngModel)]="iniciativa.inicio" name="inicio"
+                        #inicio="ngModel" min="2022-01-01" max="2025-12-31">
+                    </div>
+                </div>
+
+                <div class="input-group col s6">
+                    <label for="fin" class="col-form-label col-sm-2">Fecha de finalización</label>
+                    <div class="col-sm-6">
+                        <input type="date" [(ngModel)]="iniciativa.fin" name="fin" #fin="ngModel" value="fin"
+                            min="2022-01-01" max="2025-12-31">
+                    </div>
+                </div>
+            </div>
+
+            <p>
+              <label>
+                <input type="checkbox" class="form-control" [(ngModel)]="iniciativa.activa" name="activa" #activa="ngModel" value="activa" />
+                <span>Activa</span>
+              </label>
+            </p>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn waves-effect waves-light blue" id="create" role="button" (click)='create()' *ngIf="!iniciativa.idIniciativa else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn waves-effect waves-light blue " id="create" role="button" (click)='update()'>Guardar</button>
+                    </ng-template> <button id="cancelar" class="btn waves-effect waves-light blue " routerLink="/listaIniciativas">Cancelar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

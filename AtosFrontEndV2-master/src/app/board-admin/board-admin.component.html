@@ -1,0 +1,129 @@
+<div class="card">
+    <div class="row" id="lis">
+
+        <div class="title">
+            <div class="row">
+                <div class="col ">
+                    <h4><b>Lista de Usuarios</b></h4>
+                    <button class="btn waves-effect waves-light blue " id="boto" type="button" routerLink="/register">Crear Usuario</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h4>Filtrar búsqueda</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+
+                <div class="row">
+                    <div class="input-group col s6">
+                        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Nombre">
+                    </div>
+                    <div class="input-group col s6">
+                        <input type="text" class="form-control" [(ngModel)]="apellidos" placeholder="Apellidos">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group col s6">
+                        <input type="text" class="form-control" [(ngModel)]="u" placeholder="Perfil">
+                    </div>
+
+                    <div class="input-group col s6">
+                        <input type="text" class="form-control" [(ngModel)]="location" placeholder="Localizacion">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="input-group col  s6">
+                        <label for="iniciativa" class="col-form-label col-sm-2">Iniciativa<span id="obligatorio"> *</span></label>
+                        <select class="browser-default" [ngModelOptions]="{standalone: true}" [(ngModel)]="iniciativa">
+                        <option *ngFor="let iniciativa of iniciativas" [ngValue]="iniciativa">
+                          {{iniciativa.tituloIniciativa}}
+                          </option>
+                      </select>
+
+                    </div>
+                    <div class="input-group col s6">
+                        <input type="text" class="form-control" [(ngModel)]="center" placeholder="Centro Formativo">
+                    </div>
+                </div>
+            </div>
+            <!--   ....................  -->
+
+            <!-- <div class="input-group mb-3">Título
+              <input type="text" class="form-control" placeholder="Título" [(ngModel)]="titulo" />
+          </div> -->
+
+            <!--<div class="input-group mb-3">Descripción
+              <input type="text" class="form-control" placeholder="Descripcion" [(ngModel)]="descripcion" />
+          </div>-->
+
+            <!--    <div class="input-group mb-3">
+              <p>Fecha de inicio</p>
+              <input type="date" id="start" name="trip-start" class="form-control" [(ngModel)]="inicio">
+          </div>
+
+          <div class="input-group mb-3">
+              <p>Fecha de finalización</p>
+              <input type="date" id="start" name="trip-start" class="form-control" [(ngModel)]="fin" />
+          </div>-->
+
+            <div class="input-group mb-3">
+
+            </div>
+
+            <!--   .................... -->
+
+            <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="handleClear()">LIMPIAR</button>
+            <button class="btn waves-effect waves-light blue " id="botone" type="button" (click)="getCosas()">BUSCAR</button>
+            <button class="btn waves-effect waves-light blue " id="botone" (click)='cargarUsuarios()'>Mostrar Todas</button>
+
+        </div>
+
+        <div id="listaIniciativas">
+
+            <div class="row border-top border-bottom border-left">
+                <div class='at-container at-dd'>
+                    <h1 class='at-item'>Usuarios
+                    </h1>
+                </div>
+
+                <table class="table table-dark at-dd">
+                    <thead>
+                        <tr>
+                            <th scope="col">Centro formativo</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Localización</th>
+                            <th scope="col">Iniciativa</th>
+                            <th scope="col">Editar Usuario</th>
+                            <th scope="col">Eliminar Usuario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td>{{user.center}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.apellidos}}</td>
+                            <td>{{user.u}}</td>
+                            <td>{{user.location}}</td>
+                            <td>{{user.iniciativaUser.tituloIniciativa}}</td>
+                            <td><button class="btn waves-effect waves-light blue " (click)="updateUser(user.id)"><i
+                  class="far fa-edit"></i> Editar</button></td>
+                            <td><button class="btn waves-effect waves-light blue" (click)="dele(user.id)"><i
+                  class="far fa-trash-alt" ></i> Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

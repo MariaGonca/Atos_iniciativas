@@ -1,0 +1,45 @@
+<br>
+<br>
+<div class="col-md-6 offset-md-3 at-dd">
+    <h3 class=''> Actualizar Usuario</h3>
+    <br>
+    <br>
+    <form>
+
+        <div class="form-group">
+            <label> Nombre</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="user.username" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label> Centro</label>
+            <input type="text" class="form-control" id="center" [(ngModel)]="user.center" name="center">
+        </div>
+
+        <div class="form-group">
+            <label> Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" [(ngModel)]="user.apellidos" name="apellidos">
+        </div>
+
+        <div class="form-group">
+            <label> Localizacion</label>
+            <input type="text" class="form-control" id="location" [(ngModel)]="user.location" name="location">
+        </div>
+
+        <div class="form-group">
+            <label> Ceco</label>
+            <input type="text" class="form-control" id="ceco" [(ngModel)]="user.ceco" name="ceco">
+        </div>
+
+        <div class="form-group">
+            <label> DAS</label>
+            <input type="text" class="form-control" id="das" [(ngModel)]="user.das" name="das">
+        </div>
+
+
+        <br>
+        <button id="cancelar" class="btn waves-effect waves-light blue" (click)="onUpdate()" type="button">Actualizar</button>
+        <button id="cancelar" class="btn waves-effect waves-light blue " routerLink="/admin">Cancelar</button>
+    </form>
+</div>
+<br>

@@ -1,0 +1,75 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="/listaIniciativas/form">Añadir Iniciativas</a></li>
+    <li><a href="/listaIniciativas">Ver Iniciativas</a></li>
+</ul>
+
+
+<ul id="dropdown3" class="dropdown-content">
+    <li><a routerLink="admin" href="/admin">Menu de Gestor</a></li>
+    <li><a href="/register" routerLink="register">Registrar usuarios</a></li>
+</ul>
+<ul id="dropdown4" class="dropdown-content">
+    <li><a routerLink="agretema" href="/agretema">Crear Temas</a></li>
+    <li><a href="/listaTemas" routerLink="listaTemas">Lista de Temas</a></li>
+</ul>
+
+
+
+
+<nav class="black" style="padding:0px 10px;">
+    <div class="nav-wrapper">
+        <a id="text" routerLink="/home" class="brand-logo"> <img id="logo" class="responsive-img"
+                src="./assets/atos_cuadrado.png" alt="Logo Atos"></a>
+
+        <a href="/home" class="sidenav-trigger" data-target="mobile-nav">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down" *ngIf="isLoggedIn">
+
+
+        </ul>
+
+        <ul class="right hide-on-med-and-down">
+
+            <li *ngIf="showAdminBoard"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Iniciativas<i
+                        class="material-icons right">arrow_drop_down</i></a>
+            </li>
+
+            <li *ngIf="showAdminBoard"><a class="dropdown-trigger" href="#!" data-target="dropdown4">Temas<i
+                        class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li *ngIf="showAdminBoard">
+                <a class="dropdown-trigger" href="#!" data-target="dropdown3">Usuario<i
+                        class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li *ngIf="showModeratorBoard">
+                <a routerLinkActive="active" href="/mod" routerLink="mod">Moderator Board</a>
+            </li>
+
+            <li *ngIf="isLoggedIn">
+                <a routerLink="profile" href="/profile">Perfil de {{ username }}</a>
+            </li>
+
+            <li *ngIf="isLoggedIn">
+                <a href (click)="logout()">Cerrar sesión</a>
+            </li>
+
+        </ul>
+        <ul class="right hide-on-med-and-down" *ngIf="!isLoggedIn">
+            <li>
+                <a routerLinkActive="active" href="/login" routerLink="login">Inicia Sesion</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<ul class="sidenav" id="mobile-nav">
+    <li><a routerLinkActive="active" id="txtnav" routerLink="/home">Home</a></li>
+</ul>

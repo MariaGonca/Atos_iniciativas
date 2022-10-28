@@ -1,0 +1,30 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <!--Buscar por Titulo-->
+      <input type="text" class="form-control" placeholder="Buscar por título" [(ngModel)]="titulo" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="buscarTitulo()">
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!--Lista de Imagenes-->
+    <h4>Lista de Imagenes</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let tutorial of tutoriales; let i = index" [class.active]="i == indiceActual"
+        (click)="setTutorialActivo(tutorial, i)">
+        {{ tutorial.titulo }}
+      </li>
+    </ul>
+    <!--Eliminar todas las imagenes-->
+    <button class="m-3 btn btn-sm btn-danger" (click)="eliminarTodosTutoriales()">
+      Eliminar todo
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-tutorial-detalles [viewMode]="true" [tutorialActual]="tutorialActual"></app-tutorial-detalles>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container" >
+  
+  <h1 class="text-center">Imagenes</h1>
+  <div class="form-group" >
+    <!--Buscador de Imagenes-->
+    <input  type="search"  class="form-control" (keyup)="search($event)" placeholder="Search images">
+  </div>
+<!--Botones de Categorias-->
+  <div class= "row">
+    <div align="center"  class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <ul>
+        <button class="link" (click)="Daewoo();searchComponent($event)">Daewoo</button>
+      </ul>
+    </div>
+    <div align="center"  class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <ul>
+        <button class="link" (click)="BMW();searchComponent($event)">BMW</button>
+      </ul>
+    </div>
+    <div align="center" class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <ul>
+        <button class="link" (click)="Mercedes();searchComponent($event)">Mercedes</button>
+      </ul>
+    </div>
+  </div>
+  <div class="row" >
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3" *ngFor="let image of images">
+      <div class="card">
+        <a href="{{image.url}}_b.jpg">
+          <img src="{{image.url}}_m.jpg" title="{{image.title}}">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+  </div>
+</div>

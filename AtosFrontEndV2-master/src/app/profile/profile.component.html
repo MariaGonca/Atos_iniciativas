@@ -1,0 +1,48 @@
+<div>
+
+  <div class="row">
+    <div class="col s12 center" id="cont">
+      <h3>
+        Perfil<strong> {{ currentUser.username }}</strong>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 center">
+      <h5>
+        <!--Nombre de Usuario-->
+
+        <strong>Usuario:</strong>
+        {{currentUser.username}}
+      </h5>
+    </div>
+
+    <div class="col s6 center">
+      <h5>
+        <!--Correo-->
+
+        <strong>Email:</strong>
+        {{ currentUser.email }}
+      </h5>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
+</div>
